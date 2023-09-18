@@ -1,0 +1,30 @@
+<div class="container-fluid mt-4">
+    <div class="button-group">
+        <form action="/gallery" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col">
+                    <input type="file" class="form-control" placeholder="Search" name="files" required>
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary btn-sm" type="submit">
+                        Resim Ekle
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row mt-4 mb-4">
+        {{#each images}}
+        <div class="col-md-4">
+            <div class="card border">
+                <img src="/public/uploads/{{this.path}}" alt="" class="img-fluid">
+                <div class="card-footer text-center">
+                    <a href="/gallery/delete/{{this.id}}" class="btn btn-danger btn-sm text-white">
+                        Sil
+                    </a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

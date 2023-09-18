@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>{{title}} - Instapi</title>
+    <meta content="Admin Dashboard" name="description" />
+    <meta content="Mannatthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="shortcut icon" href="/public/images/favicon.ico">
+
+    <link href="/public/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/public/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="/public/css/style.css" rel="stylesheet" type="text/css">
+    <!-- jQuery  -->
+    <script src="/public/js/jquery.min.js"></script>
+</head>
+
+
+<body class="fixed-left">
+
+    <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <!-- Begin page -->
+    <div id="wrapper">
+
+        {{#if isLogin}}
+                <!-- ========== Left Sidebar Start ========== -->
+        <div class="left side-menu">
+            <button type="button" class="button-menu-mobile button-menu-mobile-topbar open-left waves-effect">
+                <i class="ion-close"></i>
+            </button>
+
+            <!-- LOGO -->
+            <div class="topbar-left">
+                <div class="text-center bg-logo">
+                    <a href="/" class="logo"><i class="mdi mdi-bowling text-success"></i> Instapi</a>
+                    <!-- <a href="/" class="logo"><img src="/public/images/logo.png" height="24" alt="logo"></a> -->
+                </div>
+            </div>
+
+            <div class="sidebar-inner slimscrollleft">
+
+                <div id="sidebar-menu">
+                    <ul>
+                        <li class="menu-title">Anamenü</li>
+
+                        <li>
+                            <a href="/" class="waves-effect">
+                                <i class="dripicons-device-desktop"></i>
+                                <span> Anasayfa</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/account" class="waves-effect"><i class="dripicons-user"></i><span> Hesap
+                                    İşlemleri
+                                </span></a>
+                        </li>
+                        <li>
+                            <a href="/hashtag" class="waves-effect"><i class="dripicons-broadcast"></i><span> Hashtag
+                                </span></a>
+                        </li>
+                                                <li>
+                            <a href="/gallery" class="waves-effect"><i class="dripicons-blog"></i><span> Galeri
+                                </span></a>
+                        </li>
+
+                        <li class="menu-title">İşlemler</li>
+
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-jewel"></i> <span> Instagram </span> <span class="float-right"><i
+                                        class="mdi mdi-chevron-right"></i></span></a>
+                            <ul class="list-unstyled">
+                                <li><a href="/instagram/story">Hikaye At</a></li>
+                                <li><a href="/instagram/post">Gönderi At</a></li>
+                                <li><a href="/instagram/albume">Albüm Oluştur</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div> <!-- end sidebarinner -->
+        </div>
+        <!-- Left Sidebar End -->
+        {{/if}}
+        <!-- Start right Content here -->
+
+        <div class="content-page">
+            <!-- Start content -->
+            <div class="content">
+                {{#if isLogin}}
+                                <!-- Top Bar Start -->
+                <div class="topbar">
+
+                    <nav class="navbar-custom">
+
+                        <ul class="list-inline float-right mb-0">
+
+                            <li class="list-inline-item dropdown notification-list">
+                                <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user"
+                                    data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
+                                    aria-expanded="false">
+                                    <img src="/public/images/users/avatar-6.jpg" alt="user" class="rounded-circle">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                                    <a class="dropdown-item" href="/user/logout"><i class="mdi mdi-logout m-r-5 text-muted"></i>
+                                        Çıkış Yap</a>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <ul class="list-inline menu-left mb-0">
+                            <li class="float-left">
+                                <button class="button-menu-mobile open-left waves-light waves-effect">
+                                    <i class="mdi mdi-menu"></i>
+                                </button>
+                            </li>
+                        </ul>
+
+                        <div class="clearfix"></div>
+                    </nav>
+                </div>
+                <!-- Top Bar End -->
+                {{/if}}
+
+                <div class="page-content-wrapper ">
+
+                    <div class="container-fluid">
+                        {{{body}}}
+                    </div><!-- container -->
+
+                </div> <!-- Page content Wrapper -->
+
+            </div> <!-- content -->
+
+            <footer class="footer">
+                © 2023 Instapi by karadenizemirr.
+            </footer>
+
+        </div>
+        <!-- End Right content here -->
+        
+    </div>
+    <!-- END wrapper -->
+
+
+
+    <script src="/public/js/popper.min.js"></script>
+    <script src="/public/js/bootstrap.min.js"></script>
+    <script src="/public/js/modernizr.min.js"></script>
+    <script src="/public/js/detect.js"></script>
+    <script src="/public/js/fastclick.js"></script>
+    <script src="/public/js/jquery.slimscroll.js"></script>
+    <script src="/public/js/jquery.blockUI.js"></script>
+    <script src="/public/js/waves.js"></script>
+    <script src="/public/js/jquery.scrollTo.min.js"></script>
+
+    <!-- App js -->
+    <script src="/public/js/app.js"></script>
+
+</body>
+
+</html>

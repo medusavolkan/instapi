@@ -1,0 +1,71 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card p-4">
+                <div class="card-title text-center">
+                    <h4>Hikaye At</h4>
+                </div>
+                <form action="/instagram/story" method="post">
+                    <div class="form-group mb-4">
+                        <input type="text" class="form-control" placeholder="Konum Bilgisi (örn: Anıtkabir)" name="location" autocomplete="off">
+                    </div>
+                    <div class="form-group mb-4">
+                        <div class="accounts">
+                            <select class="form-select form-control" multiple name="account">
+                                <option selected>Hikaye Atılacak Hesap</option>
+                                {{#each accounts}}
+                                <option value="{{this.id}}">{{this.username}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <div class="image-list text-center">
+                            {{#each images}}
+                            <div class="col-auto d-inline-block">
+                                <img src="/public/uploads/{{this.path}}" alt="" width="200px" class="story_img mt-4"
+                                    style="cursor: pointer;" data-path="/public/uploads/{{this.path}}">
+                            </div>
+                            {{/each}}
+                            <input type="text" hidden name="story_image" id="selectedImagesInput">
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-primary btn-sm">
+                            Hikaye At
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var selectedImage = null;
+
+        $('.image-list img').click(function () {
+            var imagePath = $(this).data('path');
+
+            if (selectedImage === imagePath) {
+                $(this).removeClass('selected');
+                $(this).css('filter', 'none'); // Efekti kaldır
+                selectedImage = null;
+            } else {
+                if (selectedImage !== null) {
+                    // Önceki seçili resmi temizle
+                    var $previousSelectedImage = $('.image-list img[data-path="' + selectedImage + '"]');
+                    $previousSelectedImage.removeClass('selected');
+                    $previousSelectedImage.css('filter', 'none');
+                }
+
+                $(this).addClass('selected');
+                $(this).css('filter', 'brightness(1.2) saturate(1.5)'); // Mavi efekt ekle
+                selectedImage = imagePath;
+            }
+
+            // Seçilen resmin path değerini hidden input alanına ekleyin
+            $('#selectedImagesInput').val(selectedImage);
+        });
+    })
+</script>

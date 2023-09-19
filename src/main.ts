@@ -35,7 +35,6 @@ async function bootstrap() {
       maxAge: 1000 * 60 * 60 // 7 days
     }
   });
-  
-  await app.listen(3000);
+  await app.listen(process.env.PORT ?? 3000, process.env.HOST || '0.0.0.0');
 }
 bootstrap();

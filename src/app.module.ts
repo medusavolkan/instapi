@@ -11,10 +11,14 @@ import { InstagramModule } from './instagram/instagram.module';
 import { LoginInterceptors } from './interceptors/login.interceptors';
 import { UserModule } from './user/user.module';
 import { JwtService } from './customService/jwt.service';
+import { LocationModule } from './location/location.module';
+import { InstagramService } from './instagram/instagram.service';
+import { LocationService } from './location/location.service';
+import { locationProviders } from './model/providers/location.providers';
 
 @Global()
 @Module({
-  imports: [DatabaseModule,AccountModule, HashtagModule, GalleryModule, InstagramModule, UserModule],
+  imports: [DatabaseModule,AccountModule, HashtagModule, GalleryModule, InstagramModule, UserModule, LocationModule],
   controllers: [AppController],
   providers: [
     AppService,
@@ -28,6 +32,6 @@ import { JwtService } from './customService/jwt.service';
     },
     JwtService
   ],
-  exports: [DatabaseModule, JwtService]
+  exports: [DatabaseModule, JwtService, LocationModule]
 })
 export class AppModule {}

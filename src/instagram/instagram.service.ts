@@ -57,7 +57,8 @@ export class InstagramService {
 
             await this.ig.publish.photo({
                 file,
-                caption: data.text
+                caption: data.text,
+                location: await this.get_location(data.location)
             })
             return true
 
@@ -77,11 +78,22 @@ export class InstagramService {
             }
             await this.ig.publish.album({
                 items: files,
-                caption: data.text
+                caption: data.text,
+                location: await this.get_location(data.location)
             })
         }catch(err){
             console.log(err)
             return false
+        }
+    }
+
+    async get_location(payload:string){
+        try{
+            const location = await this.ig.locationSearch.index(0,0, payload);
+            return location?.venues[0] || null
+        }catch(err){
+            console.log('Get location error')
+            console.log(err)
         }
     }
 }

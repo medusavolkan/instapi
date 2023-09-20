@@ -1,6 +1,7 @@
 import { Account } from "src/model/account.model"
 import { Gallery } from "src/model/gallery.model"
 import { Hashtag } from "src/model/hashtag.model"
+import { Location } from "src/model/location.model"
 import { User } from "src/model/user.model"
 import { DataSource } from "typeorm"
 
@@ -12,7 +13,7 @@ export const sqliteProviders = [
             const dataSource = new DataSource({
                 type: 'sqlite',
                 database: 'src/database/db.sqlite',
-                entities: [Account, Hashtag, Gallery, User],
+                entities: [Account, Hashtag, Gallery, User, Location],
                 synchronize: true,
             })
 

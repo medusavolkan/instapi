@@ -6,6 +6,8 @@ import { GalleryModule } from "src/gallery/gallery.module";
 import { galleryProviders } from "src/model/providers/gallery.providers";
 import { AccountService } from "src/account/account.service";
 import { accountProviders } from "src/model/providers/account.providers";
+import { LocationService } from "src/location/location.service";
+import { locationProviders } from "src/model/providers/location.providers";
 
 @Module({
     imports: [],
@@ -13,7 +15,9 @@ import { accountProviders } from "src/model/providers/account.providers";
     providers: [
         InstagramService, 
         GalleryService, ...galleryProviders,
-        AccountService, ...accountProviders
-    ]
+        AccountService, ...accountProviders,
+        LocationService, ...locationProviders
+    ],
+    exports: []
 })
 export class InstagramModule {}

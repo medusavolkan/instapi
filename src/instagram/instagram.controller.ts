@@ -4,11 +4,20 @@ import { GalleryService } from "src/gallery/gallery.service";
 import { InstagramService } from "./instagram.service";
 import { Response, response } from "express";
 import { AuthGuard } from "src/auth/auth.guard";
+import { LocationService } from "src/location/location.service";
 
 @Controller('instagram')
 @UseGuards(AuthGuard)
 export class InstagramController {
-    constructor(private galleryService: GalleryService, private accountService: AccountService, private instagramService: InstagramService) { }
+    private locations:any
+
+    constructor(private galleryService: GalleryService, private accountService: AccountService, private instagramService: InstagramService, private locationService: LocationService) { 
+        this._initialize()
+    }
+
+    private async _initialize(){
+        this.locations = await this.locationService.get_all_location()
+    }
 
     @Get('story')
     @Render('instagram/story')
@@ -19,7 +28,8 @@ export class InstagramController {
         return {
             title: 'Hikaye Oluştur',
             images: images,
-            accounts: accounts
+            accounts: accounts,
+            locations: this.locations
         }
     }
 
@@ -42,7 +52,8 @@ export class InstagramController {
         return {
             title: 'Gönderi Oluştur',
             images: images,
-            accounts: accounts
+            accounts: accounts,
+            locations : this.locations
         }
     }
 
@@ -65,7 +76,8 @@ export class InstagramController {
         return {
             title: 'Albüm Oluştur',
             images: images,
-            accounts: accounts
+            accounts: accounts,
+            locations: this.locations
         }
     }
 

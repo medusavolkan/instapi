@@ -1,0 +1,73 @@
+<div class="container-fluid mt-5 mb-5">
+    <div class="title text-center">
+        <h4>
+            Lokasyonlar
+        </h4>
+    </div>
+    <div class="button-group">
+        <button class="btn btn-primary btn-sm" id="open_location_modal">
+            Lokasyon Ekle
+        </button>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Lokasyon</th>
+                        <th scope="col">Koordinat</th>
+                        <th scope="col">İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each locations}}
+                    <tr>
+                        <th>
+                            {{this.name}}
+                        </th>
+                                                <th>
+                            {{this.coordinates}}
+                        </th>
+                        <td>
+                            <a href="/location/delete/{{this.id}}" class="btn btn-danger btn-sm text-white">
+                                Sil
+                            </a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="add_location_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title fs-5" id="exampleModalLabel">Lokasyon Ekle</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/location" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Lokasyon" name="name" autocomplete="off">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                        <button type="submit" class="btn btn-primary">Lokasyon Ekle</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $('#open_location_modal').click(function () {
+            $('#add_location_modal').modal('show');
+        });
+    });
+</script>
